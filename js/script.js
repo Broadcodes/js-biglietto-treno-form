@@ -18,7 +18,24 @@ const SCONTO_BIGLIETTO_OVER65 = 40;
 let kilometri = prompt("Inserire il numero di chilometri che si vuole percorrere oggi:");
 let anni = prompt("Inserire il numero di anni:");
 
+// Condizione per verificare se il dato inserito sia realmente un numero e non una stringa.
+// In caso di errore mostra un messaggio all'utente
+if(!isNaN(kilometri) && !isNaN(anni)){
 
+    // Calcolo il prezzo del biglietto per i km inseriti dall'utente
+    let prezzoBiglietto = PREZZO_UNITARIO_BIGLIETTO * kilometri;
 
+    // Condizione che permette di applicare lo sconto in base all'età dell'utente
+    if(anni < ETA_MINIMA){
+        prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_MINORENNE) / 100);
+    } else if(anni > ETA_MASSIMA){
+        prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_OVER65) / 100);
+    }
+
+    console.log(prezzoBiglietto.toFixed(2));
+
+} else {
+    alert("ATTENZIONE: Il valore inserito non è corretto, aggiornare la pagina");
+}
 
 
