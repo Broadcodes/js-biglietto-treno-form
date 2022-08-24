@@ -1,9 +1,13 @@
 /* 
-MILESTONE 1:
-Iniziamo implementando il programma senza alcuna estetica:
-usando esclusivamente due input e un bottone (non stilizzati),
-realizziamo le specifiche scritte sopra.
-La risposta finale (o output) sarà anch’essa da scrivere in console.
+MILESTONE 2:
+Solo una volta che il milestone 1 sarà completo e
+funzionante allora realizzeremo un form in pagina in cui
+l’utente potrà inserire i dati e visualizzare il calcolo
+finale con il prezzo.
+Il recap dei dati e l'output del prezzo finale, andranno quindi
+stampati in pagina (il prezzo dovrà essere formattato con
+massimo due decimali, per indicare i centesimi sul prezzo).
+Questo richiederà un minimo di ricerca.
 */ 
 
 // Costanti fornite dall'esercizio
@@ -21,40 +25,38 @@ let button = document.getElementById("acquistaBiglietto");
 
 button.addEventListener("click", function(){
     console.log(`kilometri: ${kilometri.value} e anni: ${anni.value}`);
+
+    let valoreKilometri = kilometri.value;
+    let valoreAnni = anni.value;
+
+    // Condizione per verificare se il dato inserito sia realmente un numero e non una stringa.
+    // In caso di errore mostra un messaggio all'utente
+    if(!isNaN(valoreKilometri) && !isNaN(valoreAnni)){
+
+        // Calcolo il prezzo del biglietto per i km inseriti dall'utente
+        let prezzoBiglietto = PREZZO_UNITARIO_BIGLIETTO * valoreKilometri;
+
+        // Condizione che permette di applicare lo sconto in base all'età dell'utente
+        if(valoreAnni < ETA_MINIMA){
+            prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_MINORENNE) / 100);
+        } else if(valoreAnni > ETA_MASSIMA){
+            prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_OVER65) / 100);
+        }
+
+        // Mostra a schermo il risultato finale in base all'età
+        if(valoreAnni < ETA_MINIMA){
+            document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per un minorenne, con km ${valoreKilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
+        } else if(valoreAnni > ETA_MASSIMA){
+            document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per un over 65, con km ${valoreKilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
+        } else {
+            document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per km ${valoreKilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
+        }
+
+        console.log(prezzoBiglietto.toFixed(2));
+
+    } else {
+        document.getElementById("calcoloBiglietto").innerHTML =`Il valore inserito non è corretto, aggiornare la pagina`;
+    }
 });
 
-
-
-
-
-/*
-// Condizione per verificare se il dato inserito sia realmente un numero e non una stringa.
-// In caso di errore mostra un messaggio all'utente
-if(!isNaN(kilometri) && !isNaN(anni)){
-
-    // Calcolo il prezzo del biglietto per i km inseriti dall'utente
-    let prezzoBiglietto = PREZZO_UNITARIO_BIGLIETTO * kilometri;
-
-    // Condizione che permette di applicare lo sconto in base all'età dell'utente
-    if(anni < ETA_MINIMA){
-        prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_MINORENNE) / 100);
-    } else if(anni > ETA_MASSIMA){
-        prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_OVER65) / 100);
-    }
-
-    // Mostra a schermo il risultato finale in base all'età
-    if(anni < ETA_MINIMA){
-        document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per un minorenne, con km ${kilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
-    } else if(anni > ETA_MASSIMA){
-        document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per un over 65, con km ${kilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
-    } else {
-        document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per km ${kilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
-    }
-
-    console.log(prezzoBiglietto.toFixed(2));
-
-} else {
-    alert("ATTENZIONE: Il valore inserito non è corretto, aggiornare la pagina");
-}
-*/
 
