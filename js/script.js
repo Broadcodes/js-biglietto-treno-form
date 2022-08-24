@@ -14,9 +14,20 @@ const SCONTO_BIGLIETTO_MINORENNE = 20;
 const SCONTO_BIGLIETTO_OVER65 = 40;
 
 // Variabili che conterranno i km e gli anni acquisiti in input
-let kilometri = prompt("Inserire il numero di chilometri che si vuole percorrere oggi:");
-let anni = prompt("Inserire il numero di anni:");
+let kilometri = document.getElementById("kilometri");
+let anni = document.getElementById("anni");
 
+let button = document.getElementById("acquistaBiglietto");
+
+button.addEventListener("click", function(){
+    console.log(`kilometri: ${kilometri.value} e anni: ${anni.value}`);
+});
+
+
+
+
+
+/*
 // Condizione per verificare se il dato inserito sia realmente un numero e non una stringa.
 // In caso di errore mostra un messaggio all'utente
 if(!isNaN(kilometri) && !isNaN(anni)){
@@ -45,5 +56,5 @@ if(!isNaN(kilometri) && !isNaN(anni)){
 } else {
     alert("ATTENZIONE: Il valore inserito non è corretto, aggiornare la pagina");
 }
-
+*/
 

@@ -8,3 +8,14 @@ body {
     font-family: sans-serif;
 }
 
+.form{
+    line-height: 2rem;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+button{
+    margin-top: 20px;
+}
