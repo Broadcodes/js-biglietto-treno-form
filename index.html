@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biglietti Online - Trenitalia</title>
-
+    
     <!-- <link rel="shortcut icon" href="" type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
 
     <script type="text/javascript" src="js/script.js" defer></script>
@@ -25,26 +28,42 @@
             <li><a class="active" href="#">Acquista biglietto</a></li>
             <li><a href="#">Chi siamo</a></li>
         </ul>
+        <a href="#"><i class="fa-solid fa-bars"></i></a>
     </header>
 
     <main>
         <section id="primaSchermata">
-            <div class="container">
-                <div class="form">
-                    <label for="utente">Inserire nome e cognome:</label>
-                    <input type="text" name="utente" id="utente">
-                    <label for="kilometri">Inserire il numero di chilometri che si vuole percorrere:</label>
-                    <input type="text" name="kilometri" id="kilometri">
-                    <label for="anni">Inserire il numero di anni:</label>
-                    <input type="text" name="anni" id="anni">
-                    <a href="#bigliettoAcquistato"><button id="acquistaBiglietto">Acquista Biglietto</button></a>
-                </div>
+            <div class="form">
+                <label for="utente">Inserire nome e cognome:</label>
+                <input type="text" name="utente" id="utente">
+                <label for="kilometri">Inserire il numero di chilometri che si vuole percorrere:</label>
+                <input type="text" name="kilometri" id="kilometri">
+                <label for="anni">Inserire il numero di anni:</label>
+                <input type="text" name="anni" id="anni">
+                <a href="#bigliettoAcquistato"><button id="acquistaBiglietto">Acquista Biglietto</button></a>
         </section>
-        <section id="secondaSchermata">
+        <section id="secondaSchermata" class="disabilitaScheda">
             <div class="container">
                 <div id="bigliettoAcquistato">
                     <div class="dettagliBiglietti">
 
+                        <h2>DETTAGLIO PASSEGGERO</h2>
+                        <table>
+                            <tr>
+                                <th>Nome Passeggero</th>
+                                <th>Offerta</th>
+                                <th>Carrozza</th>
+                                <th>Codice CP</th>
+                                <th>Costo Biglietto</th>
+                            </tr>
+                            <tr>
+                                <td id="nomePasseggero"></td>
+                                <td id="offerta"></td>
+                                <td id="carrozza"></td>
+                                <td id="codiceCP"></td>
+                                <td id="costoBiglietto"></td>
+                            </tr>
+                        </table>
                     </div>
                     <p id="calcoloBiglietto"></p>
                 </div>

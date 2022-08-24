@@ -8,6 +8,7 @@ body {
     font-family: sans-serif;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .active{
@@ -25,6 +26,15 @@ header {
     width: 100%;
     padding: 0 50px;
     background: #fff;
+}
+
+header a:nth-child(3){
+    display: none;
+}
+
+header a i{
+    font-size: 1.4rem;
+    color: black;
 }
 
 header img {
@@ -56,7 +66,9 @@ header ul li a:hover{
     background-image: url("../img/Frecciarossa.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     margin-top: 80px;
+    width: 100vw;
     height: calc(100vh - 80px);
     position: relative;
 }
@@ -75,6 +87,8 @@ header ul li a:hover{
     padding: 50px 50px 20px;
     display: flex;
     flex-direction: column;
+    margin-left: 8%;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 label,
@@ -107,7 +121,103 @@ button:hover{
     color: green;
 }
 
+.disabilitaScheda{
+    display: none;
+}
+
+.visualizzaScheda{
+    display: block;
+}
+
 #bigliettoAcquistato{
     width: 100%;
     height: calc(100vh - 80px);
 }
+
+.dettagliBiglietti{
+    margin-top: 2px;
+    transform: translateY(200px);
+    border: 3px solid #dddddd;
+    border-radius: 10px;
+    padding: 50px;
+}
+
+.dettagliBiglietti h2{
+    padding-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th{
+    background-color: #f6f6f6;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  /* TABLET */
+  @media screen and (max-width: 900px) {
+    header {
+        padding: 0 20px;
+    }
+
+    header ul li {
+        padding: 0 13px;
+    }
+
+    #primaSchermata{
+        height: calc(100vh - 80px);
+        position: relative;
+    }
+
+    .form {
+        position: absolute;
+        top: 25%;
+        width: 550px;
+        border: 5px solid rgb(96, 96, 96);
+        border-radius: 20px;
+        padding: 50px 50px 20px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 8%;
+    }
+  }
+
+  /* MOBILE */
+  @media screen and (max-width: 720px) {
+    header {
+        padding-left: 0px;
+        padding-right: 40px;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    header ul {
+        padding-bottom: 15px;
+    }
+
+    header ul li {
+        padding: 15px;
+    }
+
+    header a:nth-child(3){
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 40px;
+    }
+
+    header ul{
+        display: none;
+    }
+
+    .form {
+        width: 80%;
+    }
+  }

@@ -8,43 +8,79 @@ const SCONTO_BIGLIETTO_OVER65 = 40;
 // Variabili che conterranno i km e gli anni acquisiti in input
 let kilometri = document.getElementById("kilometri");
 let anni = document.getElementById("anni");
+let utente = document.getElementById("utente");
+let mostraSecondaScheda = document.getElementById("secondaSchermata");
 
 let button = document.getElementById("acquistaBiglietto");
 
-button.addEventListener("click", function(){
-    console.log(`kilometri: ${kilometri.value} e anni: ${anni.value}`);
-
-    let valoreKilometri = kilometri.value;
-    let valoreAnni = anni.value;
-
-    // Condizione per verificare se il dato inserito sia realmente un numero e non una stringa.
-    // In caso di errore mostra un messaggio all'utente
-    if(!isNaN(valoreKilometri) && !isNaN(valoreAnni)){
-
-        // Calcolo il prezzo del biglietto per i km inseriti dall'utente
-        let prezzoBiglietto = PREZZO_UNITARIO_BIGLIETTO * valoreKilometri;
-
-        // Condizione che permette di applicare lo sconto in base all'età dell'utente
-        if(valoreAnni < ETA_MINIMA){
-            prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_MINORENNE) / 100);
-        } else if(valoreAnni > ETA_MASSIMA){
-            prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_OVER65) / 100);
-        }
-
-        // Mostra a schermo il risultato finale in base all'età
-        if(valoreAnni < ETA_MINIMA){
-            document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per un minorenne, con km ${valoreKilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
-        } else if(valoreAnni > ETA_MASSIMA){
-            document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per un over 65, con km ${valoreKilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
-        } else {
-            document.getElementById("calcoloBiglietto").innerHTML = `Il prezzo del biglietto per km ${valoreKilometri}, ammonta a € ${prezzoBiglietto.toFixed(2)}`;
-        }
-
-        console.log(prezzoBiglietto.toFixed(2));
-
+button.addEventListener("click", function () {
+    // Controllo dei campi vuoti
+    if (utente.value === '') {
+        utente.style.backgroundColor = "red";
     } else {
-        document.getElementById("calcoloBiglietto").innerHTML =`Il valore inserito non è corretto, aggiornare la pagina`;
+        utente.style.backgroundColor = "white";
     }
+
+    if (kilometri.value === '') {
+        kilometri.style.backgroundColor = "red";
+    } else {
+        kilometri.style.backgroundColor = "white";
+    }
+
+    if (anni.value === '') {
+        anni.style.backgroundColor = "red";
+    } else {
+        anni.style.backgroundColor = "white";
+    }
+
+    // Controllo dei campi vuoti generale
+    if (!(kilometri.value === '' || anni.value === '' || utente.value === '')) {
+        mostraSecondaScheda.className = " visualizzaScheda";
+    } else {
+        mostraSecondaScheda.className = " disabilitaScheda";
+    }
+
+        console.log(`kilometri ${kilometri.value}, anni ${anni.value}, utente ${utente.value}`);
+
+        let valoreKilometri = kilometri.value;
+        let valoreAnni = anni.value;
+
+        // Condizione per verificare se il dato inserito sia realmente un numero e non una stringa.
+        // In caso di errore mostra un messaggio all'utente
+        if (!isNaN(valoreKilometri) && !isNaN(valoreAnni)) {
+
+            // Calcolo il prezzo del biglietto per i km inseriti dall'utente
+            let prezzoBiglietto = PREZZO_UNITARIO_BIGLIETTO * valoreKilometri;
+
+            // Condizione che permette di applicare lo sconto in base all'età dell'utente
+            if (valoreAnni < ETA_MINIMA) {
+                prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_MINORENNE) / 100);
+            } else if (valoreAnni > ETA_MASSIMA) {
+                prezzoBiglietto -= ((prezzoBiglietto * SCONTO_BIGLIETTO_OVER65) / 100);
+            }
+
+            // Mostra a schermo il risultato finale in base all'età
+            document.getElementById("nomePasseggero").innerHTML = `${utente.value}`;
+
+            if (valoreAnni < ETA_MINIMA) {
+                document.getElementById("offerta").innerHTML = `Sconto 20%`;
+                document.getElementById("carrozza").innerHTML = Math.ceil(Math.random() * 15);
+                document.getElementById("codiceCP").innerHTML = Math.ceil(Math.random() * 90000);
+                document.getElementById("costoBiglietto").innerHTML = `${prezzoBiglietto.toFixed(2)}`;
+            } else if (valoreAnni > ETA_MASSIMA) {
+                document.getElementById("offerta").innerHTML = `Sconto 40%`;
+                document.getElementById("carrozza").innerHTML = Math.ceil(Math.random() * 15);
+                document.getElementById("codiceCP").innerHTML = Math.ceil(Math.random() * 90000);
+                document.getElementById("costoBiglietto").innerHTML = `${prezzoBiglietto.toFixed(2)}`;
+            } else {
+                document.getElementById("offerta").innerHTML = `Biglietto Standard`;
+                document.getElementById("carrozza").innerHTML = Math.ceil(Math.random() * 15);
+                document.getElementById("codiceCP").innerHTML = Math.ceil(Math.random() * 90000);
+                document.getElementById("costoBiglietto").innerHTML = `${prezzoBiglietto.toFixed(2)}`;
+            }
+
+            console.log(prezzoBiglietto.toFixed(2));
+        }
 });
 
 
