@@ -13,14 +13,33 @@
 </head>
 <body>
 
-    <div class="form">
-        <label for="kilometri">Inserire il numero di chilometri che si vuole percorrere oggi:</label>
-        <input type="text" name="kilometri" id="kilometri">
-        <label for="anni">Inserire il numero di anni:</label>
-        <input type="text" name="anni" id="anni">
-        <button id="acquistaBiglietto">Acquista Biglietto</button>
+    <!-- HEADER: Creazione del menu superiore -->
+    <header>
+        <a href="index.html"><img src="img/trenitalia-logo.svg" alt="Trenitalia - Logo"></a>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Destinazioni</a></li>
+            <li><a href="#">Offerte</a></li>
+            <li><a class="active" href="#">Acquista biglietto</a></li>
+            <li><a href="#">Chi siamo</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="form">
+            <label for="kilometri">Inserire il numero di chilometri che si vuole percorrere:</label>
+            <input type="text" name="kilometri" id="kilometri">
+            <label for="anni">Inserire il numero di anni:</label>
+            <input type="text" name="anni" id="anni">
+            <button id="acquistaBiglietto">Acquista Biglietto</button>
+        </div>
+
+        <div class="bigliettoAcquistato">
+            
+        </div>
         <p id="calcoloBiglietto"></p>
-    </div>
+    </main>
+
     
     
 
